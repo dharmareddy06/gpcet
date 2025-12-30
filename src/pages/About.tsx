@@ -147,7 +147,7 @@ const About = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: "NAAC A+", desc: "National Assessment and Accreditation Council" },
+              { name: "NAAC A", desc: "National Assessment and Accreditation Council" },
               { name: "NBA", desc: "National Board of Accreditation" },
               { name: "AICTE", desc: "All India Council for Technical Education" },
               { name: "JNTUA", desc: "Jawaharlal Nehru Technological University" },

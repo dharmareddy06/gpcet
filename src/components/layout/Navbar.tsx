@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, Clock } from "lucide-react";
+import { Menu, X, Phone, Mail, Clock, ChevronDown, ChevronRight } from "lucide-react";
 import { collegeInfo, navLinks } from "@/data/collegeData";
 import { cn } from "@/lib/utils";
 
@@ -109,18 +109,56 @@ const Navbar = () => {
       {/* Main Navigation */}
       <nav className="bg-primary shadow-nav sticky top-0 z-50">
         <div className="college-container">
-          <div className="hidden lg:flex items-center justify-center">
+          <div className="hidden lg:flex items-center justify-center gap-1">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "block px-4 py-4 text-sm font-medium text-primary-foreground hover:bg-secondary transition-colors",
-                  isActive(link.href) && "bg-secondary"
+              <div key={link.name} className="relative group">
+                <Link
+                  to={link.href}
+                  className={cn(
+                    "flex items-center gap-1 px-4 py-4 text-sm font-medium text-primary-foreground hover:bg-secondary transition-colors",
+                    isActive(link.href) && "bg-secondary"
+                  )}
+                >
+                  {link.name}
+                  {link.subLinks && <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />}
+                </Link>
+
+                {/* Dropdown Menu */}
+                {link.subLinks && (
+                  <div className="absolute left-0 top-full hidden group-hover:block w-72 pt-2">
+                    <div className="bg-white rounded-md shadow-lg border border-border overflow-visible py-2 animate-in fade-in zoom-in-95 duration-200">
+                      {link.subLinks.map((subLink) => (
+                        <div key={subLink.name} className="relative group/sub">
+                          <Link
+                            to={subLink.href}
+                            className="flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                          >
+                            <span>{subLink.name}</span>
+                            {subLink.subLinks && <ChevronRight className="w-4 h-4 text-gray-400" />}
+                          </Link>
+
+                          {/* Nested Dropdown */}
+                          {subLink.subLinks && (
+                            <div className="absolute left-full top-0 hidden group-hover/sub:block w-72 pl-2">
+                              <div className="bg-white rounded-md shadow-lg border border-border overflow-hidden py-2 animate-in fade-in zoom-in-95 duration-200">
+                                {subLink.subLinks.map((nestedLink) => (
+                                  <Link
+                                    key={nestedLink.name}
+                                    to={nestedLink.href}
+                                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+                                  >
+                                    {nestedLink.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              >
-                {link.name}
-              </Link>
+              </div>
             ))}
           </div>
         </div>

@@ -342,29 +342,57 @@ export const navLinks = [
   {
     name: "About",
     href: "/about",
-    subLinks: [
-      { name: "Vision & Mission", href: "/about#vision" },
-      { name: "Management", href: "/about#management" },
-      { name: "Principal's Message", href: "/about#principal" },
-      { name: "Infrastructure", href: "/about#infrastructure" },
-    ],
+    // subLinks: [
+    //   { name: "Management", href: "/about#management" },
+    //   { name: "Principal's Message", href: "/about#principal" },
+    //   { name: "Infrastructure", href: "/about#infrastructure" },
+    // ],
   },
   {
     name: "Departments",
     href: "/departments",
-    subLinks: departments.map((d) => ({ name: d.name, href: `/departments/${d.id}` })),
+    subLinks: [
+      {
+        name: "B.Tech",
+        href: "/departments",
+        subLinks: departments.map((d) => ({ name: d.name, href: `/departments/${d.id}` })),
+      },
+      {
+        name: "M.Tech",
+        href: "/departments",
+        subLinks: mtechPrograms.map((d) => ({ name: d.name, href: `/departments/${d.id}` })),
+      },
+      {
+        name: "MBA",
+        href: "/departments",
+        subLinks: mbaPrograms.map((d) => ({ name: d.name, href: `/departments/${d.id}` })),
+      },
+    ],
   },
   { name: "Placements", href: "/placements" },
-  { name: "Research", href: "/research" },
+  {
+    name: "Research",
+    href: "/research",
+    subLinks: [
+      { name: "Research Home", href: "/research?section=research-home" },
+      { name: "Research Supervisors", href: "/research?section=supervisors" },
+      { name: "Research Grants", href: "/research?section=grants" },
+      { name: "Papers Published", href: "/research?section=papers" },
+      { name: "Conferences", href: "/research?section=conferences" },
+      { name: "Book Chapters", href: "/research?section=books" },
+      { name: "Research Resources", href: "/research?section=resources" },
+      { name: "Plagiarism Tool", href: "/research?section=plagiarism" },
+    ],
+  },
   { name: "Innovation", href: "/innovation" },
   {
     name: "Campus Life",
     href: "/campus-life",
-    subLinks: [
-      { name: "Facilities", href: "/campus-life#facilities" },
-      { name: "Clubs & Activities", href: "/campus-life#clubs" },
-      { name: "Events", href: "/campus-life#events" },
-    ],
+    // subLinks: [
+    //   { name: "Facilities", href: "/campus-life#facilities" },
+    //   { name: "Clubs & Activities", href: "/campus-life#clubs" },
+    //   { name: "Events", href: "/campus-life#events" },
+    // ],
   },
   { name: "Student Services", href: "/student-services" },
   { name: "Contact", href: "/contact" },

@@ -138,7 +138,7 @@ const FacultyLogin = () => {
                             <div className="mt-8 pt-6 border-t border-border text-center">
                                 <p className="text-sm text-muted-foreground">
                                     New Faculty Member? <br />
-                                    Please contact the <a href="/contact" className="text-primary hover:underline">HR Department</a> to collect your login credentials.
+                                    Please contact the <a href="/contact" className="text-primary hover:underline">Management</a> to collect your login credentials.
                                 </p>
                             </div>
                         </div>
